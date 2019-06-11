@@ -1,0 +1,37 @@
+vue.component缺点
+全局定义：强制要求每个component中的命名不能重复
+字符串模板：缺乏语法高亮，在html有多行的时候，需要用的丑陋的\
+不支持css：意味着当html和javascript组件化时，css明显被遗漏
+没有构建步骤：限制只能使用html和es5javascript，而不能使用预处理器，如Pug（formerly Jade）和babel
+
+
+组件的组成-属性
+自定义属性props  组件props中声明的属性
+原生属性 attrs 没有声明属性，默认自动挂载到组件根元素上，设置inheritAttrs为false可以关闭自动挂载
+特殊属性 class style 挂载到组件根元素上，支持字符串，对象，数组等多种语法
+
+
+组件的组成-事件
+普通事件  @click,@input,@change,@xxx等事件
+修饰符事件 @input.trim,@click.stop,@submit.prevent等 一般用于原生html元素，自定义组件需要自行开发支持
+
+跨组件传递 provide(父) inject(子)
+
+vuex 独立提供响应式数据
+state --this.$store.state.xxx 取值
+getter -- this.$store.getters.xxx 取值 具有缓存的效果
+mutation -- this.$store.commit('xxx') 赋值
+action -- this.$store.dispatch('xxx')赋值  不能直接的修改值
+module
+
+state : 提供一个响应式的数据
+getter：借助vue的计算属性computed来实现缓存
+mutation：更改state的方法
+action：触发mutation方法
+module：vue.set动态添加state到响应式数据中
+
+module :
+    开启命名空间 namespaced： true
+    嵌套模块不要过深，尽量扁平化
+    灵活应用 createNamespacedHelpers
+
